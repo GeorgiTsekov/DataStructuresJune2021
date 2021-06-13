@@ -87,7 +87,7 @@ namespace P06ImplementTheDataStructureReversedList
     {
         static void Main()
         {
-            ReversedList<int> reversedList = new ReversedList<int>();
+            var reversedList = new ReversedList<int>();
 
             reversedList.Add(5);
             reversedList.Add(6);

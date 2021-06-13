@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01SumAndAverage", "SumAndAverage\P01SumAndAverage.csproj", "{E8DFD127-C536-4083-B4E2-835B72B6F45D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01SumAndAverage", "SumAndAverage\P01SumAndAverage.csproj", "{E8DFD127-C536-4083-B4E2-835B72B6F45D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02SortWords", "P02SortWords\P02SortWords.csproj", "{A499DA85-EE07-4724-88E6-BE90AED85CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02SortWords", "P02SortWords\P02SortWords.csproj", "{A499DA85-EE07-4724-88E6-BE90AED85CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03LonguestSubsequence", "P03LonguestSubsequence\P03LonguestSubsequence.csproj", "{0B2797FD-4D56-4C0B-A4C6-15E5283B33EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03LonguestSubsequence", "P03LonguestSubsequence\P03LonguestSubsequence.csproj", "{0B2797FD-4D56-4C0B-A4C6-15E5283B33EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04RemoveOddOccurences", "P04RemoveOddOccurences\P04RemoveOddOccurences.csproj", "{E8DC9A79-B479-4A9E-A7AA-B30D48AB2366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04RemoveOddOccurences", "P04RemoveOddOccurences\P04RemoveOddOccurences.csproj", "{E8DC9A79-B479-4A9E-A7AA-B30D48AB2366}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05CountOfOccurences", "P05CountOfOccurences\P05CountOfOccurences.csproj", "{1C623557-4E94-4522-94CB-777C29D4E9CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05CountOfOccurences", "P05CountOfOccurences\P05CountOfOccurences.csproj", "{1C623557-4E94-4522-94CB-777C29D4E9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06ImplementTheDataStructureReversedList", "P06ImplementTheDataStructureReversedList\P06ImplementTheDataStructureReversedList.csproj", "{A9ED7C58-85B7-4A93-A4D3-D6EBF589B071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P06ImplementTheDataStructureReversedList", "P06ImplementTheDataStructureReversedList\P06ImplementTheDataStructureReversedList.csproj", "{A9ED7C58-85B7-4A93-A4D3-D6EBF589B071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P07DistanceInLabyrinth", "P07DistanceInLabyrinth\P07DistanceInLabyrinth.csproj", "{3D35C3A5-8F3D-438B-ADA2-A607A47E81C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A9ED7C58-85B7-4A93-A4D3-D6EBF589B071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9ED7C58-85B7-4A93-A4D3-D6EBF589B071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9ED7C58-85B7-4A93-A4D3-D6EBF589B071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D35C3A5-8F3D-438B-ADA2-A607A47E81C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D35C3A5-8F3D-438B-ADA2-A607A47E81C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D35C3A5-8F3D-438B-ADA2-A607A47E81C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D35C3A5-8F3D-438B-ADA2-A607A47E81C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
