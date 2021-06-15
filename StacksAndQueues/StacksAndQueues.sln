@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithStack", "WithStack\WithStack.csproj", "{85595557-3BA2-453E-99E7-6BA02BD2D8CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02CalculateSequenceWithQueue", "P02CalculateSequenceWithQueue\P02CalculateSequenceWithQueue.csproj", "{C54563F2-B703-445F-B594-96B4592E0500}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85595557-3BA2-453E-99E7-6BA02BD2D8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85595557-3BA2-453E-99E7-6BA02BD2D8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85595557-3BA2-453E-99E7-6BA02BD2D8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85595557-3BA2-453E-99E7-6BA02BD2D8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54563F2-B703-445F-B594-96B4592E0500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54563F2-B703-445F-B594-96B4592E0500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54563F2-B703-445F-B594-96B4592E0500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54563F2-B703-445F-B594-96B4592E0500}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6C47E36-6225-4687-934A-BC982D22AF96}
+	EndGlobalSection
+EndGlobal
