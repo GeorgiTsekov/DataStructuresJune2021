@@ -12,12 +12,29 @@
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            var node = this.head;
+
+            while (node != null)
+            {
+                if (node.Item.Equals(item))
+                {
+                    return true;
+                }
+
+                node = node.Next;
+            }
+
+            return false;
         }
 
         public T Dequeue()
         {
-            throw new NotImplementedException();
+            ValidateCollection();
+
+            var oldHead = this.head;
+            this.head = this.head.Next;
+            this.Count--;
+            return oldHead.Item;
         }
 
         public void Enqueue(T item)
@@ -40,7 +57,9 @@
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            ValidateCollection();
+
+            return this.head.Item;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -57,6 +76,14 @@
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        private void ValidateCollection()
+        {
+            if (this.Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
         }
     }
 }
