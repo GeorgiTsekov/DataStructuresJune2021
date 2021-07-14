@@ -5,11 +5,18 @@
 
     public class Tree<T> : IAbstractTree<T>
     {
-        private readonly List<Tree<T>> _children;
+        private readonly List<Tree<T>> children;
 
-        public Tree(T key, params Tree<T>[] children)
+        public Tree(T key, params Tree<T>[] _children)
         {
-            throw new NotImplementedException();
+            this.Key = key;
+            this.children = new List<Tree<T>>();
+
+            foreach (var child in _children)
+            {
+                this.AddChild(child);
+                child.AddParent(this);
+            }
         }
 
         public T Key { get; private set; }
@@ -18,21 +25,33 @@
 
 
         public IReadOnlyCollection<Tree<T>> Children
-            => this._children.AsReadOnly();
+            => this.children.AsReadOnly();
 
         public void AddChild(Tree<T> child)
         {
-            throw new NotImplementedException();
+            this.children.Add(child);
         }
 
         public void AddParent(Tree<T> parent)
         {
-            throw new NotImplementedException();
+            this.Parent = parent;
         }
 
         public string GetAsString()
         {
-            throw new NotImplementedException();
+            return GetAsString(0).TrimEnd();
+        }
+
+        private string GetAsString(int indentation = 0)
+        {
+            var result = new string(' ', indentation) + this.Key + "\r\n";
+
+            foreach (var child in this.Children)
+            {
+                result += child.GetAsString(indentation + 2);
+            }
+
+            return result;
         }
 
         public Tree<T> GetDeepestLeftomostNode()
