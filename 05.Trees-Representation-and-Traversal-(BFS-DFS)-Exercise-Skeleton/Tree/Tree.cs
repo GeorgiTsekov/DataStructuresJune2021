@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Tree<T> : IAbstractTree<T>
     {
@@ -56,32 +57,172 @@
 
         public Tree<T> GetDeepestLeftomostNode()
         {
-            throw new NotImplementedException();
+            var leafNodes = this.GetLeafNodes();
+            var result = new List<Tree<T>>();
+
+            foreach (var leaf in leafNodes)
+            {
+                var node = leaf;
+                var currentNodes = new List<Tree<T>>();
+
+                while (node != null)
+                {
+                    currentNodes.Add(node);
+                    node = node.Parent;
+                }
+
+                if (currentNodes.Count > result.Count)
+                {
+                    currentNodes.Reverse();
+                    result = currentNodes;
+                }
+            }
+
+            return result.LastOrDefault();
         }
 
         public List<T> GetLeafKeys()
         {
-            throw new NotImplementedException();
+            var leafNodes = this.GetLeafNodes();
+
+            return leafNodes.Select(x => x.Key).ToList();
+        }
+
+        private List<Tree<T>> GetLeafNodes()
+        {
+            var leafNodes = new List<Tree<T>>();
+
+            var queue = new Queue<Tree<T>>();
+            queue.Enqueue(this);
+
+            while (queue.Count != 0)
+            {
+                var node = queue.Dequeue();
+
+                if (node.Children.Count == 0)
+                {
+                    leafNodes.Add(node);
+                }
+
+                foreach (var child in node.Children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
+
+            return leafNodes;
         }
 
         public List<T> GetMiddleKeys()
         {
-            throw new NotImplementedException();
+            var leafNodes = this.GetMiddleNodes();
+
+            return leafNodes.Select(x => x.Key).ToList();
+        }
+
+        private List<Tree<T>> GetMiddleNodes()
+        {
+            var midleNodes = new List<Tree<T>>();
+
+            var queue = new Queue<Tree<T>>();
+            queue.Enqueue(this);
+
+            while (queue.Count != 0)
+            {
+                var node = queue.Dequeue();
+
+                if (node.Children.Count != 0 && node.Parent != null)
+                {
+                    midleNodes.Add(node);
+                }
+
+                foreach (var child in node.Children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
+
+            return midleNodes;
         }
 
         public List<T> GetLongestPath()
         {
-            throw new NotImplementedException();
+            var leafNodes = this.GetLeafNodes();
+            var result = new List<T>();
+
+            foreach (var leaf in leafNodes)
+            {
+                var node = leaf;
+                var currentNodes = new List<T>();
+
+                while (node != null)
+                {
+                    currentNodes.Add(node.Key);
+                    node = node.Parent;
+                }
+
+                if (currentNodes.Count > result.Count)
+                {
+                    currentNodes.Reverse();
+                    result = currentNodes;
+                }
+            }
+
+            return result;
         }
 
         public List<List<T>> PathsWithGivenSum(int sum)
         {
-            throw new NotImplementedException();
+            var leafNodes = this.GetLeafNodes();
+            var result = new List<List<T>>();
+
+            foreach (var leaf in leafNodes)
+            {
+                var node = leaf;
+                var currentSum = 0;
+                var currentNodes = new List<T>();
+
+                while (node != null)
+                {
+                    currentNodes.Add(node.Key);
+                    currentSum += Convert.ToInt32(node.Key); //int.Parse(node.Key.ToString());
+                    node = node.Parent;
+                }
+
+                if (currentSum == sum)
+                {
+                    currentNodes.Reverse();
+                    result.Add(currentNodes);
+                }
+            }
+
+            return result;
         }
 
         public List<Tree<T>> SubTreesWithGivenSum(int sum)
         {
-            throw new NotImplementedException();
+            var roots = new List<Tree<T>>();
+
+            SubTreeDFS(this, sum, roots);
+
+            return roots;
+        }
+
+        private int SubTreeDFS(Tree<T> node, int targetSum, List<Tree<T>> roots)
+        {
+            var currentSum = Convert.ToInt32(node.Key);
+
+            foreach (var child in node.Children)
+            {
+                currentSum += SubTreeDFS(child, targetSum, roots);
+            }
+
+            if (currentSum == targetSum)
+            {
+                roots.Add(node);
+            }
+
+            return currentSum;
         }
     }
 }
