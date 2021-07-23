@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Magnum.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace _04.CookiesProblem
 {
@@ -6,7 +9,7 @@ namespace _04.CookiesProblem
     {
         public int Solve(int k, int[] cookies)
         {
-            throw new NotImplementedException();
+            var bag = new OrderedBag<int>
         }
     }
 }
