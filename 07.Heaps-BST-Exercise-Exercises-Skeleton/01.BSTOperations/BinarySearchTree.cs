@@ -230,7 +230,27 @@
 
         public int GetRank(T element)
         {
-            throw new NotImplementedException();
+            return this.GetRank(element, this.Root);
+        }
+
+        private int GetRank(T element, Node<T> node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            if (this.IsSmaller(element, node.Value))
+            {
+                return this.GetRank(element, node.LeftChild);
+            }
+
+            if (this.IsGreater(element, node.Value))
+            {
+                return 1 + this.GetRank(element, node.LeftChild) + this.GetRank(element, node.RightChild);
+            }
+
+            return 1;
         }
     }
 }
