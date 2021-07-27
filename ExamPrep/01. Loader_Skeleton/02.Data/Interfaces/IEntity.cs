@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public interface IEntity : IComparable
+    public interface IEntity : IComparable, IComparable<IEntity>
     {
         int Id { get; set; }
 

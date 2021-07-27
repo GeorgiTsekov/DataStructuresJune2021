@@ -202,27 +202,32 @@
             return null;
         }
 
-        //private int IndexOf(int searched, int start, int end)
-        //{
-        //    if (start >= end)
-        //    {
-        //        return -1;
-        //    }
+        private int IndexOf(int searchedId, int start, int end)
+        {
+            if (start >= end)
+            {
+                return -1;
+            }
+            if (start == end && end == entities.Count || end == -1)
+            {
+                return -1;
+            }
 
-        //    var middle = (start + end) / 2;
+            var middle = (start + end) / 2;
 
-        //    if (this.entities[middle].Id == searched)
-        //    {
-        //        return middle;
-        //    }
+            if (this.entities[middle].Id == searchedId)
+            {
+                return middle;
+            }
 
-        //    var index = IndexOf(searched, middle + 1, end);
-        //    if (index == - 1)
-        //    {
-        //        index = IndexOf(searched, start, middle - 1);
-        //    }
-
-        //    return index;
-        //}
+            if (entities[middle].Id > searchedId)
+            {
+                return IndexOf(searchedId, start, middle - 1);
+            }
+            else
+            {
+                return IndexOf(searchedId, middle + 1, end);
+            }
+        }
     }
 }

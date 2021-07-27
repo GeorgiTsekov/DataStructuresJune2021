@@ -5,7 +5,7 @@ namespace _02.Data.Models
     using System;
     using System.Collections.Generic;
 
-    public abstract class BaseEntity : IEntity
+    public abstract class BaseEntity : IEntity, IComparable<IEntity>
     {
         private int? _parentId;
 
@@ -50,6 +50,11 @@ namespace _02.Data.Models
             var other = (IEntity)obj;
 
             return other.Id - Id;
+        }
+
+        public int CompareTo(IEntity other)
+        {
+            return Id - other.Id;
         }
     }
 }
