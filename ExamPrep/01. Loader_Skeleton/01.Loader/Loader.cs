@@ -208,6 +208,7 @@
             {
                 return -1;
             }
+
             if (start == end && end == entities.Count || end == -1)
             {
                 return -1;
