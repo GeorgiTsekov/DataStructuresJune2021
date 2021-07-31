@@ -50,29 +50,31 @@ public class RoyaleArena : IArena
             throw new InvalidOperationException();
         }
 
-        return this.cards
-            .OrderByDescending(x => x.Value.Swag)
-            .ThenBy(x => x.Key).Take(n)
-            .ToDictionary(x => x.Key, y => y.Value).Values
-            .ToList();
+        return this.cards.Values
+            .OrderBy(x => x.Swag)
+            .ThenBy(x => x.Id).Take(n);
     }
 
     public IEnumerable<Battlecard> GetAllByNameAndSwag()
     {
-        var cardsInSwagOrder = this.cards.Values
-            .OrderBy(x => x.Name.Distinct())
-            .ThenBy(x => x.Swag).Distinct()
-            .ToList();
+        var newCard = new Dictionary<string, Battlecard>();
 
-        return cardsInSwagOrder;
+        foreach (var battlecard in this.cards.Values.OrderByDescending(x => x.Swag).ThenBy(x => x.Id))
+        {
+            if (!newCard.ContainsKey(battlecard.Name))
+            {
+                newCard.Add(battlecard.Name, battlecard);
+            }
+        }
+
+        return newCard.Values.Reverse();
     }
 
     public IEnumerable<Battlecard> GetAllInSwagRange(double lo, double hi)
     {
         return this.cards.Values
             .Where(x => x.Swag >= lo && x.Swag <= hi)
-            .OrderBy(x => x.Swag)
-            .ToList();
+            .OrderBy(x => x.Swag);
     }
 
     public IEnumerable<Battlecard> GetByCardType(CardType type)
@@ -152,7 +154,7 @@ public class RoyaleArena : IArena
     public IEnumerable<Battlecard> GetByTypeAndDamageRangeOrderedByDamageThenById(CardType type, int lo, int hi)
     {
         var newCards = this.cards.Values
-             .Where(x => x.Type == type && x.Damage >= lo && x.Damage <= hi)
+             .Where(x => x.Type == type && x.Damage > lo && x.Damage <= hi)
              .OrderByDescending(x => x.Damage)
              .ThenBy(x => x.Id)
              .ToList();
@@ -167,7 +169,7 @@ public class RoyaleArena : IArena
 
     public IEnumerator<Battlecard> GetEnumerator()
     {
-        return this.GetEnumerator();
+        return this.cards.Values.ToList().GetEnumerator();
     }
 
     public void RemoveById(int id)
@@ -182,6 +184,6 @@ public class RoyaleArena : IArena
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return this.cards.GetEnumerator();
+        return this.cards.Values.ToList().GetEnumerator();
     }
 }
