@@ -8,43 +8,49 @@
 
     public class DocumentObjectModel : IDocument
     {
-        private List<IHtmlElement> list;
+        private List<IHtmlElement> children;
+        private IHtmlElement parent;
+        private Dictionary<string, string> attributes;
 
         public DocumentObjectModel(IHtmlElement root)
         {
             this.Root = root;
+            this.parent = root.Parent;
+            this.children = root.Children;
+            this.attributes = root.Attributes;
         }
 
         public DocumentObjectModel()
         {
-            list = new List<IHtmlElement>();
+            this.children = new List<IHtmlElement>();
+            this.attributes = new Dictionary<string, string>();
         }
 
         public IHtmlElement Root { get; private set; }
 
         public IHtmlElement GetElementByType(ElementType type)
         {
-            return this.list.FirstOrDefault(x => x.Type == type);
+            return this.parent.Children.FirstOrDefault(x => x.Type == type);
         }
 
         public List<IHtmlElement> GetElementsByType(ElementType type)
         {
-            return this.list.Where(x => x.Type == type).ToList();
+            return this.children.Where(x => x.Type == type).ToList();
         }
 
         public bool Contains(IHtmlElement htmlElement)
         {
-            return this.list.Contains(htmlElement);
+            return this.children.Contains(htmlElement);
         }
 
         public void InsertFirst(IHtmlElement parent, IHtmlElement child)
         {
-            if (!this.list.Contains(parent))
+            if (!this.children.Contains(parent))
             {
                 throw new InvalidOperationException();
             }
 
-            foreach (var element in this.list)
+            foreach (var element in this.children)
             {
                 if (element.Parent == parent)
                 {
@@ -55,12 +61,12 @@
 
         public void InsertLast(IHtmlElement parent, IHtmlElement child)
         {
-            if (!this.list.Contains(parent))
+            if (!this.children.Contains(parent))
             {
                 throw new InvalidOperationException();
             }
 
-            foreach (var element in this.list)
+            foreach (var element in this.children)
             {
                 if (element.Parent == parent)
                 {
@@ -71,17 +77,17 @@
 
         public void Remove(IHtmlElement htmlElement)
         {
-            if (!this.list.Contains(htmlElement))
+            if (!this.children.Contains(htmlElement))
             {
                 throw new InvalidOperationException();
             }
 
-            this.list.Remove(htmlElement);
+            this.children.Remove(htmlElement);
         }
 
         public void RemoveAll(ElementType elementType)
         {
-            this.list = this.list.Where(x => x.Type != elementType).ToList();
+            this.children = this.children.Where(x => x.Type != elementType).ToList();
         }
 
         public bool AddAttribute(string attrKey, string attrValue, IHtmlElement htmlElement)

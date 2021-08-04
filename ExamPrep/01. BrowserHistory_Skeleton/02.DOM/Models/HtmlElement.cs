@@ -6,11 +6,17 @@
 
     public class HtmlElement : IHtmlElement
     {
+        public HtmlElement()
+        {
+
+        }
+
         public HtmlElement(ElementType type, params IHtmlElement[] children)
         {
             this.Attributes = new Dictionary<string, string>();
             this.Type = type;
             this.Children = new List<IHtmlElement>();
+            this.Attributes = new Dictionary<string, string>();
 
             foreach (var child in children)
             {
