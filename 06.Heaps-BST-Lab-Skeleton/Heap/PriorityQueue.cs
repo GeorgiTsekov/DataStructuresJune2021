@@ -1,10 +1,10 @@
-﻿namespace _03.PriorityQueue
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-    public class PriorityQueue<T> : IAbstractHeap<T>
-        where T : IComparable<T>
+namespace Heap
+{
+    public class PriorityQueue<T> where T : IComparable<T>
     {
         private List<T> heap;
 

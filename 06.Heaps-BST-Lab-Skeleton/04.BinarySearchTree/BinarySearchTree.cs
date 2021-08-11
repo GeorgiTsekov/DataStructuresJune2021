@@ -11,7 +11,7 @@
 
         public BinarySearchTree(Node<T> root)
         {
-            // TODO: Create copy from root
+            this.Root = root;
         }
 
         public Node<T> Root { get; private set; }
@@ -27,9 +27,33 @@
             throw new NotImplementedException();
         }
 
-        public void Insert(T element)
+        public void Insert(T value, Node<T> node)
         {
-            throw new NotImplementedException();
+            if (node == null)
+            {
+                node = new Node<T>(value, null, null);
+                Root = node;
+                return;
+            }
+
+            if (node.Value.CompareTo(value) > 0)
+            {
+                if (node.LeftChild == null)
+                {
+                    node.LeftChild = new Node<T>(value, null, null);
+                    return;
+                }
+                Insert(value, node.LeftChild);
+            }
+            else
+            {
+                if (node.RightChild == null)
+                {
+                    node.RightChild = new Node<T>(value, null, null);
+                    return;
+                }
+                Insert(value, node.RightChild);
+            }
         }
 
         public IAbstractBinarySearchTree<T> Search(T element)
