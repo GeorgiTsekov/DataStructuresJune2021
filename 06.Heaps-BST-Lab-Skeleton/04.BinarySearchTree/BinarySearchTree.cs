@@ -12,6 +12,8 @@
         public BinarySearchTree(Node<T> root)
         {
             this.Root = root;
+            this.LeftChild = root.LeftChild;
+            this.RightChild = root.RightChild;
         }
 
         public Node<T> Root { get; private set; }
@@ -22,9 +24,35 @@
 
         public T Value => this.Root.Value;
 
-        public bool Contains(T element)
+        public bool Contains(T value)
         {
-            throw new NotImplementedException();
+            return Contains(value, this.Root);
+        }
+
+        public bool Contains(T value, Node<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+            if (node.Value.CompareTo(value) == 0)
+            {
+                return true;
+            }
+
+            if (node.Value.CompareTo(value) > 0)
+            {
+                return Contains(value, node.LeftChild);
+            }
+            else
+            {
+                return Contains(value, node.RightChild);
+            }
+        }
+
+        public void Insert(T value)
+        {
+            Insert(value, this.Root);
         }
 
         public void Insert(T value, Node<T> node)
@@ -56,9 +84,30 @@
             }
         }
 
-        public IAbstractBinarySearchTree<T> Search(T element)
+        public IAbstractBinarySearchTree<T> Search(T value)
         {
-            throw new NotImplementedException();
+            return Search(value, this.Root);
+        }
+
+        public IAbstractBinarySearchTree<T> Search(T value, Node<T> node)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+            if (node.Value.CompareTo(value) == 0)
+            {
+                return new BinarySearchTree<T>(node);
+            }
+
+            if (node.Value.CompareTo(value) > 0)
+            {
+                return Search(value, node.LeftChild);
+            }
+            else
+            {
+                return Search(value, node.RightChild);
+            }
         }
     }
 }
