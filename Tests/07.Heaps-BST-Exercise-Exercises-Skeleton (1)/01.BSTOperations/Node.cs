@@ -8,11 +8,9 @@
 
         public Node<T> RightChild { get; set; }
 
-        public Node(T value, Node<T> leftChild, Node<T> rightChild)
+        public Node(T value)
         {
             this.Value = value;
-            this.LeftChild = leftChild;
-            this.RightChild = rightChild;
         }
     }
 }
