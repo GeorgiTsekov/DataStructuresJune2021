@@ -9,7 +9,9 @@
     {
         public BinaryTree(T value, BinaryTree<T> left, BinaryTree<T> right)
         {
-            throw new NotImplementedException();
+            this.Value = value;
+            this.LeftChild = left;
+            this.RightChild = right;
         }
 
         public T Value { get; set; }

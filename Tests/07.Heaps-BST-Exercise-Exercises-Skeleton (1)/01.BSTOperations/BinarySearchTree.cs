@@ -225,7 +225,32 @@
 
         public int GetRank(T element)
         {
-            throw new NotImplementedException();
+            if (this.Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return this.GetRank(element, this.Root);
+        }
+
+        private int GetRank(T element, Node<T> node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            if (element.CompareTo(node.Value) < 0)
+            {
+                return this.GetRank(element, node.LeftChild);
+            }
+
+            if (element.CompareTo(node.Value) > 0)
+            {
+                return 1 + this.GetRank(element, node.LeftChild) + this.GetRank(element, node.RightChild);
+            }
+
+            return 1;
         }
     }
 }

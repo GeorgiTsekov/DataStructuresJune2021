@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _03.MinHeap;
+using Magnum.Collections;
 
 namespace _04.CookiesProblem
 {
@@ -6,7 +7,26 @@ namespace _04.CookiesProblem
     {
         public int Solve(int k, int[] cookies)
         {
-            throw new NotImplementedException();
+            var bag = new MinHeap<int>();
+            foreach (var cookie in cookies)
+            {
+                bag.Add(cookie);
+            }
+
+            var smallestElement = bag.Peek();
+            var steps = 0;
+
+            while (bag.Size > 1 && smallestElement < k)
+            {
+                var leastSweetCookie = bag.Dequeue();
+                var secondLeastSweetCookie = bag.Dequeue();
+
+                steps++;
+                bag.Add(leastSweetCookie + 2 * secondLeastSweetCookie);
+                smallestElement = bag.Peek();
+            }
+
+            return smallestElement >= k ? steps : -1;
         }
     }
 }
