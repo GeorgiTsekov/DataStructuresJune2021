@@ -10,6 +10,9 @@
         private class Node
         {
             public T Value { get; set; }
+
+            public Node Parent;
+
             public List<Node> Children { get; set; }
 
             public Node(T value)
@@ -21,16 +24,14 @@
 
         private readonly Node root;
 
-        private readonly Dictionary<T, Node> parentsByChildValue;
         private readonly Dictionary<T, Node> nodesByValue;
 
         public Hierarchy(T value)
         {
-            this.parentsByChildValue = new Dictionary<T, Node>();
             this.nodesByValue = new Dictionary<T, Node>();
             this.root = new Node(value);
             this.nodesByValue.Add(value, this.root);
-            this.parentsByChildValue.Add(value, null);
+
         }
 
         public int Count => nodesByValue.Count;
@@ -44,7 +45,7 @@
 
             var childNode = new Node(childValue);
             this.nodesByValue.Add(childValue, childNode);
-            this.parentsByChildValue.Add(childValue, this.nodesByValue[parentValue]);
+            childNode.Parent = this.nodesByValue[parentValue];
             this.nodesByValue[parentValue].Children.Add(childNode);
         }
 
@@ -60,18 +61,17 @@
                 throw new ArgumentException();
             }
 
-            var parentNode = this.parentsByChildValue[element];
             var node = this.nodesByValue[element];
+            var parentNode = node.Parent;
 
             parentNode.Children.Remove(node);
             parentNode.Children.AddRange(node.Children);
             foreach (var child in node.Children)
             {
-                this.parentsByChildValue[child.Value] = parentNode;
+                this.nodesByValue[child.Value].Parent = parentNode;
             }
 
             this.nodesByValue.Remove(element);
-            this.parentsByChildValue.Remove(element);
         }
 
         public IEnumerable<T> GetChildren(T element)
@@ -93,7 +93,7 @@
                 throw new ArgumentException();
             }
 
-            var parentNode = this.parentsByChildValue[element];
+            var parentNode = this.nodesByValue[element].Parent;
             return parentNode != null ? parentNode.Value : default;
         }
 
@@ -104,17 +104,17 @@
 
         public IEnumerable<T> GetCommonElements(Hierarchy<T> other)
         {
-            return this.nodesByValue.Keys.Intersect(other);
-            //var list = new List<T>();
-            //foreach (var item in this.nodesByValue.Keys)
-            //{
-            //    if (other.nodesByValue.ContainsKey(item))
-            //    {
-            //        list.Add(item);
-            //    }
-            //}
+            //return this.nodesByValue.Keys.Intersect(other);
+            var list = new List<T>();
+            foreach (var item in this.nodesByValue.Keys)
+            {
+                if (other.nodesByValue.ContainsKey(item))
+                {
+                    list.Add(item);
+                }
+            }
 
-            //return list;
+            return list;
         }
 
         public IEnumerator<T> GetEnumerator()
