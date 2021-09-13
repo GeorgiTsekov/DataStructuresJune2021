@@ -16,11 +16,6 @@ namespace _01.RoyaleArena
 
         public void Add(BattleCard card)
         {
-            if (this.Contains(card))
-            {
-                throw new NotImplementedException();
-            }
-
             this.BattleCards.Add(card.Id, card);
         }
 
@@ -33,131 +28,125 @@ namespace _01.RoyaleArena
 
         public void ChangeCardType(int id, CardType type)
         {
-            if (!this.BattleCards.ContainsKey(id))
-            {
-                throw new NotImplementedException();
-            }
-
+            Exists(id);
             this.BattleCards[id].Type = type;
+        }
+
+        private void Exists(int cardId)
+        {
+            if (!this.BattleCards.ContainsKey(cardId))
+            {
+                throw new InvalidOperationException();
+            }
         }
 
         public BattleCard GetById(int id)
         {
-            if (!this.BattleCards.ContainsKey(id))
-            {
-                throw new NotImplementedException();
-            }
-
+            Exists(id);
             return this.BattleCards[id];
         }
 
         public void RemoveById(int id)
         {
-            if (!this.BattleCards.ContainsKey(id))
-            {
-                throw new NotImplementedException();
-            }
-
+            Exists(id);
             this.BattleCards.Remove(id);
         }
 
         public IEnumerable<BattleCard> GetByCardType(CardType type)
         {
-            var cardWithCurrentType = this.BattleCards.Values
+            var cards = this.BattleCards
+                .Select(x => x.Value)
                 .Where(x => x.Type == type)
                 .OrderByDescending(x => x.Damage)
-                .ThenBy(x => x.Id)
-                .ToList();
+                .ThenBy(x => x.Id);
 
-            return cardWithCurrentType;
+            IsCardsCountZero(cards);
+
+            return cards;
+        }
+
+        private static void IsCardsCountZero(IOrderedEnumerable<BattleCard> cards)
+        {
+            if (cards.Count() == 0)
+            {
+                throw new InvalidOperationException();
+            }
         }
 
         public IEnumerable<BattleCard> GetByTypeAndDamageRangeOrderedByDamageThenById(CardType type, int lo, int hi)
         {
-            var cardWithCurrentTypeAndDamage = this.BattleCards.Values
-                .Where(x => x.Type == type && x.Damage >= lo && x.Damage <= hi)
+            var cards = this.BattleCards
+                .Select(x => x.Value)
+                .Where(x => x.Type == type && x.Damage > lo && x.Damage < hi)
                 .OrderByDescending(x => x.Damage)
-                .ThenBy(x => x.Id)
-                .ToList();
+                .ThenBy(x => x.Id);
 
-            return cardWithCurrentTypeAndDamage;
+            IsCardsCountZero(cards);
+
+            return cards;
         }
 
         public IEnumerable<BattleCard> GetByCardTypeAndMaximumDamage(CardType type, double damage)
         {
-            var cardWithCurrentTypeAndDamage = this.BattleCards.Values
+            var cards = this.BattleCards
+                .Select(x => x.Value)
                 .Where(x => x.Type == type && x.Damage <= damage)
                 .OrderByDescending(x => x.Damage)
-                .ThenBy(x => x.Id)
-                .ToList();
+                .ThenBy(x => x.Id);
 
-            if (cardWithCurrentTypeAndDamage == null)
-            {
-                throw new InvalidOperationException();
-            }
+            IsCardsCountZero(cards);
 
-            return cardWithCurrentTypeAndDamage;
+            return cards;
         }
 
         public IEnumerable<BattleCard> GetByNameOrderedBySwagDescending(string name)
         {
-            var cardWithCurrentTypeAndDamage = this.BattleCards.Values
+            var cards = this.BattleCards
+                .Select(x => x.Value)
                 .Where(x => x.Name == name)
                 .OrderByDescending(x => x.Swag)
-                .ThenBy(x => x.Id)
-                .ToList();
+                .ThenBy(x => x.Id);
 
-            if (cardWithCurrentTypeAndDamage == null)
-            {
-                throw new InvalidOperationException();
-            }
+            IsCardsCountZero(cards);
 
-            return cardWithCurrentTypeAndDamage;
+            return cards;
         }
 
         public IEnumerable<BattleCard> GetByNameAndSwagRange(string name, double lo, double hi)
         {
-            var cardWithCurrentTypeAndDamage = this.BattleCards.Values
+            var cards = this.BattleCards
+               .Select(x => x.Value)
                .Where(x => x.Name == name && x.Swag >= lo && x.Swag < hi)
                .OrderByDescending(x => x.Swag)
-               .ThenBy(x => x.Id)
-               .ToList();
+               .ThenBy(x => x.Id);
 
-            if (cardWithCurrentTypeAndDamage == null)
-            {
-                throw new InvalidOperationException();
-            }
+            IsCardsCountZero(cards);
 
-            return cardWithCurrentTypeAndDamage;
+            return cards;
         }
 
         public IEnumerable<BattleCard> FindFirstLeastSwag(int n)
         {
-            if (n > this.Count)
+            if (n > this.BattleCards.Count)
             {
-                throw new InvalidCastException();
+                throw new InvalidOperationException();
             }
 
-            var cards = this.BattleCards.Values
+            var cards = this.BattleCards
+                .Select(x => x.Value)
                 .OrderBy(x => x.Swag)
                 .ThenBy(x => x.Id)
-                .Take(n)
-                .ToList();
+                .Take(n);
 
             return cards;
         }
 
         public IEnumerable<BattleCard> GetAllInSwagRange(double lo, double hi)
         {
-            var cardWithCurrentTypeAndDamage = this.BattleCards.Values
+            var cardWithCurrentTypeAndDamage = this.BattleCards
+               .Select(x => x.Value)
                .Where(x => x.Swag >= lo && x.Swag <= hi)
-               .OrderBy(x => x.Swag)
-               .ToList();
-
-            if (cardWithCurrentTypeAndDamage == null)
-            {
-                return new List<BattleCard>();
-            }
+               .OrderBy(x => x.Swag);
 
             return cardWithCurrentTypeAndDamage;
         }
