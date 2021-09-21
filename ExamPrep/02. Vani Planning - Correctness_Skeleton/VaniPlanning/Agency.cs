@@ -4,135 +4,174 @@ using System.Linq;
 
 public class Agency : IAgency
 {
-    private Dictionary<string, Invoice> invocesDitctionary;
+    private Dictionary<string, Invoice> invocesDictionary;
 
     public Agency()
     {
-        this.invocesDitctionary = new Dictionary<string, Invoice>();
+        this.invocesDictionary = new Dictionary<string, Invoice>();
     }
 
     public bool Contains(string number)
     {
-        return this.invocesDitctionary.ContainsKey(number);
+        return this.invocesDictionary.ContainsKey(number);
     }
 
     public int Count()
     {
-        return this.invocesDitctionary.Count;
+        return this.invocesDictionary.Count;
     }
 
     public void Create(Invoice invoice)
     {
-        if (this.invocesDitctionary.ContainsKey(invoice.SerialNumber))
+        if (this.invocesDictionary.ContainsKey(invoice.SerialNumber))
         {
             throw new ArgumentException();
         }
 
-        this.invocesDitctionary.Add(invoice.SerialNumber, invoice);
+        this.invocesDictionary.Add(invoice.SerialNumber, invoice);
     }
 
     public void ExtendDeadline(DateTime dueDate, int days)
     {
-        if (!this.invocesDitctionary.Any(x => x.Value.DueDate == dueDate))
+        var result = this.invocesDictionary
+            .Values
+            .Where(x => x.DueDate == dueDate);
+
+        if (result.Count() == 0)
         {
             throw new ArgumentException();
         }
 
-        this.invocesDitctionary = this.invocesDitctionary
-            .Where(x => x.Value.DueDate == dueDate.AddDays(days))
-            .ToDictionary(x => x.Key, y => y.Value);
+        foreach (var item in result)
+        {
+            item.DueDate = item.DueDate.AddDays(days);
+        }
     }
 
     public IEnumerable<Invoice> GetAllByCompany(string company)
     {
-        return this.invocesDitctionary
-            .Where(x => x.Value.CompanyName == company)
-            .OrderByDescending(x => x.Key)
-            .ToDictionary(x => x.Key, y => y.Value).Values
-            .ToList();
+        return this.invocesDictionary
+            .Select(x => x.Value)
+            .Where(x => x.CompanyName == company)
+            .OrderByDescending(x => x.SerialNumber);
     }
 
     public IEnumerable<Invoice> GetAllFromDepartment(Department department)
     {
-        return this.invocesDitctionary
-            .Where(x => x.Value.Department == department)
-            .OrderByDescending(x => x.Value.Subtotal)
-            .ThenBy(x => x.Value.IssueDate)
-            .ToDictionary(x => x.Key, y => y.Value).Values
-            .ToList();
+        return this.invocesDictionary
+            .Select(x => x.Value)
+            .Where(x => x.Department == department)
+            .OrderByDescending(x => x.Subtotal)
+            .ThenBy(x => x.IssueDate);
     }
 
     public IEnumerable<Invoice> GetAllInvoiceInPeriod(DateTime start, DateTime end)
     {
-        return this.invocesDitctionary
-            .Where(x => x.Value.DueDate >= start && x.Value.DueDate <= end)
-            .OrderBy(x => x.Value.IssueDate)
-            .ThenBy(x => x.Value.DueDate)
-            .ToDictionary(x => x.Key, y => y.Value).Values
-            .ToList();
+        return this.invocesDictionary
+            .Select(x => x.Value)
+            .Where(x => x.IssueDate >= start && x.IssueDate <= end)
+            .OrderBy(x => x.IssueDate)
+            .ThenBy(x => x.DueDate);
     }
 
     public void PayInvoice(DateTime due)
     {
-        if (!this.invocesDitctionary.Any(x => x.Value.DueDate == due))
+        var result = this.invocesDictionary.Values.Where(x => x.DueDate == due);
+
+        if (result.Count() == 0)
         {
             throw new ArgumentException();
         }
 
-        foreach (var invoice in this.invocesDitctionary.Values)
+        foreach (var invoice in result)
         {
-            if (invoice.DueDate == due)
-            {
-                invoice.Subtotal = 0;
-            }
+            invoice.Subtotal = 0;
         }
     }
 
     public IEnumerable<Invoice> SearchBySerialNumber(string serialNumber)
     {
-        if (!this.invocesDitctionary.ContainsKey(serialNumber))
+        var keys = this.invocesDictionary.Keys.Where(x => x.Contains(serialNumber));
+        if (keys.Count() == 0)
         {
             throw new ArgumentException();
         }
 
-        var list = new List<Invoice>();
-        list.Add(this.invocesDitctionary[serialNumber]);
-        return list;
+        return keys
+            .OrderByDescending(x => x)
+            .Select(x => this.invocesDictionary[x]);
     }
 
     public void ThrowInvoice(string number)
     {
-        if (!this.invocesDitctionary.ContainsKey(number))
+        if (!this.invocesDictionary.ContainsKey(number))
         {
             throw new ArgumentException();
         }
 
-        this.invocesDitctionary.Remove(number);
+        this.invocesDictionary.Remove(number);
     }
 
     public IEnumerable<Invoice> ThrowInvoiceInPeriod(DateTime start, DateTime end)
     {
-        if (!this.invocesDitctionary.Any(x => x.Value.DueDate >= start && x.Value.DueDate <= end))
+        var result = this.invocesDictionary
+            .Values
+            .Where(x => x.DueDate.Date > start.Date && x.DueDate.Date < end.Date)
+            .ToList();
+
+        if (result.Count() == 0)
         {
             throw new ArgumentException();
         }
 
-        var list = this.invocesDitctionary
-            .Where(x => x.Value.DueDate >= start && x.Value.DueDate <= end)
-            .ToDictionary(x => x.Key, y => y.Value).Values
-            .ToList();
+        foreach (var invoice in result)
+        {
+            this.ThrowInvoice(invoice.SerialNumber);
+        }
 
-        this.invocesDitctionary = this.invocesDitctionary
-            .Where(x => x.Value.DueDate < start && x.Value.DueDate > end)
-            .ToDictionary(x => x.Key, y => y.Value);
+        return result;
+        //if (!this.invocesDictionary.Any(x => x.Value.DueDate >= start && x.Value.DueDate <= end))
+        //{
+        //    throw new ArgumentException();
+        //}
 
-        return list;
+        //var list = this.invocesDictionary
+        //    .Where(x => x.Value.DueDate >= start && x.Value.DueDate <= end)
+        //    .ToDictionary(x => x.Key, y => y.Value).Values
+        //    .ToList();
+
+        //this.invocesDictionary = this.invocesDictionary
+        //    .Where(x => x.Value.DueDate < start && x.Value.DueDate > end)
+        //    .ToDictionary(x => x.Key, y => y.Value);
+
+        //return list;
     }
 
     public void ThrowPayed()
     {
-        this.invocesDitctionary = this.invocesDitctionary
-            .Where(x => x.Value.Subtotal > 0)
-            .ToDictionary(x => x.Key, y => y.Value);
+        this.invocesDictionary = this.invocesDictionary
+            .Select(x => x.Value)
+            .Where(x => x.Subtotal > 0)
+            .ToList()
+            .ToDictionary(x => x.SerialNumber, x => x);
+
+        var result = this.invocesDictionary
+            .Values
+            .Where(x => x.Subtotal == 0)
+            .ToList();
+
+        if (result.Count() == 0)
+        {
+            return;
+        }
+
+        foreach (var invoice in result)
+        {
+            this.ThrowInvoice(invoice.SerialNumber);
+        }
+
+        //this.invocesDictionary = this.invocesDictionary
+        //    .Where(x => x.Value.Subtotal > 0)
+        //    .ToDictionary(x => x.Key, y => y.Value);
     }
 }

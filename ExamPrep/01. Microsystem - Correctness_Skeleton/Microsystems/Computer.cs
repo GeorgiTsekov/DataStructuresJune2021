@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Computer
+public class Computer : IComparable<Computer>
 {
     public Computer(int number, Brand brand, double price, double screenSize, string color)
     {
@@ -23,5 +23,23 @@ public class Computer
 
     public string Color { get; set; }
 
+    public int CompareTo(Computer other)
+    {
+        return (int)(other.Price * 100 - this.Price * 100);
+    }
 
+    public override bool Equals(object obj)
+    {
+        var other = obj as Computer;
+        if (other == null)
+        {
+            return false;
+        }
+        return this.Number == other.Number;
+    }
+
+    public override int GetHashCode()
+    {
+        return this.Number;
+    }
 }
