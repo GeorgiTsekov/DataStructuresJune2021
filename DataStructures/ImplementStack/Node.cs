@@ -1,11 +1,10 @@
-﻿namespace ImplementLinkedList
+﻿namespace ImplementStack
 {
-    // recursive data structure
     public class Node<T>
     {
         public Node(T value)
         {
-            Value = value;
+            this.Value = value;
         }
 
         public T Value { get; set; }

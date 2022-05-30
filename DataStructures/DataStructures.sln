@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImplementList", "DataStruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementLinkedList", "ImplementLinkedList\ImplementLinkedList.csproj", "{633EF114-38B4-4F5A-9638-70CBA6F21BDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementStack", "ImplementStack\ImplementStack.csproj", "{A230A34C-2141-4A56-97AB-0200578BA82F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementQueue", "ImplementQueue\ImplementQueue.csproj", "{38C4A310-AC2F-4818-B3F1-9187E408453D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{633EF114-38B4-4F5A-9638-70CBA6F21BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{633EF114-38B4-4F5A-9638-70CBA6F21BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{633EF114-38B4-4F5A-9638-70CBA6F21BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A230A34C-2141-4A56-97AB-0200578BA82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A230A34C-2141-4A56-97AB-0200578BA82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A230A34C-2141-4A56-97AB-0200578BA82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A230A34C-2141-4A56-97AB-0200578BA82F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C4A310-AC2F-4818-B3F1-9187E408453D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C4A310-AC2F-4818-B3F1-9187E408453D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C4A310-AC2F-4818-B3F1-9187E408453D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C4A310-AC2F-4818-B3F1-9187E408453D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

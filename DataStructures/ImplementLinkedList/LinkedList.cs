@@ -8,6 +8,8 @@ namespace ImplementLinkedList
 
         public Node<T> Tail { get; set; }
 
+        public int Count { get; set; }
+
         public void AddHead(T element)
         {
             var newHead = new Node<T>(element);
@@ -18,6 +20,7 @@ namespace ImplementLinkedList
                 this.Tail = newHead;
             }
             this.Head = newHead;
+            this.Count++;
         }
 
         public void AddTail(T element)
@@ -33,6 +36,7 @@ namespace ImplementLinkedList
                 this.Tail.Next = newTail;
                 this.Tail = newTail;
             }
+            this.Count++;
         }
 
         public Node<T> RemoveFirst()
@@ -47,7 +51,7 @@ namespace ImplementLinkedList
             {
                 this.Tail = null;
             }
-
+            this.Count--;
             return oldHead;
         }
 
@@ -70,7 +74,7 @@ namespace ImplementLinkedList
             {
                 this.Head = null;
             }
-
+            this.Count--;
             return oldTail;
         }
     }
