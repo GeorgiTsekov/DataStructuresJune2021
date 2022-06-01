@@ -62,9 +62,9 @@
 
         public int IndexOf(T item)
         {
-            for (int i = 0; i < this.Count; i++)
+            for (int i = this.Count - 1; i >= 0; i--)
             {
-                if (this.items[i].Equals(items))
+                if (this.items[i].Equals(item))
                 {
                     return this.Count - i - 1;
                 }
@@ -75,32 +75,58 @@
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            this.Validate(index);
+
+            if (this.Count == this.items.Length)
+            {
+                this.items = DoubleArraySize(this.items);
+            }
+
+            for (int i = this.Count; i >= this.Count - index; i--)
+            {
+                this.items[i] = this.items[i - 1];
+
+            }
+
+            this.items[this.Count - index] = item;
+            this.Count++;
         }
 
         public bool Remove(T item)
         {
-            var isTrue = false;
-
+            int index = -1;
             for (int i = this.Count - 1; i >= 0; i--)
             {
-                if (isTrue)
-                {
-                    break;
-                }
-
                 if (this.items[i].Equals(item))
                 {
-                    isTrue = RemoveElementByIndexAndUseNextElementInThisIndex(isTrue, i);
+                    index = this.Count - 1 - i;
+                    break;
                 }
             }
 
-            return isTrue;
+            if (index >= 0)
+            {
+                for (int i = this.Count - index; i < this.Count; i++)
+                {
+                    this.items[i] = this.items[i + 1];
+                }
+                this.Count--;
+                return true;
+            }
+
+            return false;
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            this.Validate(index);
+
+            for (int i = this.Count - index; i < this.Count; i++)
+            {
+                this.items[i] = this.items[i + 1];
+            }
+
+            this.Count--;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -131,25 +157,6 @@
             Array.Copy(items, newItems, this.Count);
 
             return newItems;
-        }
-
-        private bool RemoveElementByIndexAndUseNextElementInThisIndex(bool isTrue, int i)
-        {
-            for (int j = this.Count - 1; j >= 0; j--)
-            {
-                if (j == 1)
-                {
-                    this.items[j] = this.items[0];
-                }
-                else
-                {
-                    Array.Resize(ref this.items, this.Count--);
-
-                    isTrue = true;
-                }
-            }
-
-            return isTrue;
         }
     }
 }
