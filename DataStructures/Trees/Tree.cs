@@ -24,8 +24,8 @@ namespace Trees
 
         public List<Node<T>> BFS(Node<T> root)
         {
-            List<Node<T>> list = new List<Node<T>>();
-            Queue<Node<T>> queue = new Queue<Node<T>>();
+            var list = new List<Node<T>>();
+            var queue = new Queue<Node<T>>();
 
             queue.Enqueue(root);
 
