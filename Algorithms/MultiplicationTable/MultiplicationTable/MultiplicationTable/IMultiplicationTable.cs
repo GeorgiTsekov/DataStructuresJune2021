@@ -1,11 +1,27 @@
-﻿namespace MultiplicationTable
+﻿using System.Collections.Generic;
+
+namespace MultiplicationTable
 {
     public interface IMultiplicationTable
     {
-        int Number { get; set; }
+        int Number { get; }
 
-        string MultiplicateFirstNPrimeNumbers();
+        int[,] MultiplicateFirstNPrimeNumbers();
 
-        public void Print(string result);
+        bool IsPrime(int currentNumber);
+
+        void AddPrimeNumbersToTheFirstRowColOfTheMatrix(int[,] matrix, List<int> primeNumbers, int number);
+
+        void ForeachOddIntegers(int[,] matrix, List<int> primeNumbers);
+
+        bool IsPrimeNumbersCountIsEqualToNPlusOne(int countOfPrimeNumbers);
+
+        void MultiplicateNumbersInTheMatrix(int[,] matrix);
+
+        int BeautifierBeforePrint(int row, int col, int indent, int[,] matrix);
+
+        string ToString(int[,] matrix);
+
+        void Print(string result);
     }
 }
