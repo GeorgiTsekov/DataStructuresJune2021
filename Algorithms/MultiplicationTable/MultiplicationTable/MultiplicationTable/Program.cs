@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace MultiplicationTable
 {
@@ -12,7 +13,8 @@ namespace MultiplicationTable
             var n = integerValidation.IsValid(input);
 
             var multiplicationTable = new MultiplicationTable(n);
-            var result = multiplicationTable.MultiplicateFirstNPrimeNumbers();
+            var matrix = multiplicationTable.MultiplicateFirstNPrimeNumbers();
+            var result = multiplicationTable.ToString(matrix);
             multiplicationTable.Print(result);
         }
     }
