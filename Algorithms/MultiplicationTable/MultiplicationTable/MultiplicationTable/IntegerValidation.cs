@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace MultiplicationTable
 {
@@ -11,15 +10,14 @@ namespace MultiplicationTable
             {
                 throw new NullReferenceException("The number cannot be null or whitespace!");
             }
+            bool isInteger = Int32.TryParse(n, out int result);
 
-            if (n.Any(x => !char.IsDigit(x)))
+            if (!isInteger)
             {
-                throw new ArgumentException("The number shout be Integer!");
+                throw new ArgumentException("The number shout be positive Integer!");
             }
 
-            int number = int.Parse(n);
-
-            return number;
+            return result;
         }
     }
 }
