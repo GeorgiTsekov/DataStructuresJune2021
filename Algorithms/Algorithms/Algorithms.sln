@@ -5,7 +5,13 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recursion", "Algorithms\Recursion.csproj", "{55CD2185-3E38-4F93-A343-49E27B42389A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labirint", "Labirint\Labirint.csproj", "{170F0C09-2B51-4823-9787-4781380FE494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Labirint", "Labirint\Labirint.csproj", "{170F0C09-2B51-4823-9787-4781380FE494}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permutations", "Permutations\Permutations.csproj", "{B286632F-ECD8-4774-901A-F44455388CD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variations", "Variations\Variations.csproj", "{28E81839-AA05-44DE-A4B0-68690DD36789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinations", "Combinations\Combinations.csproj", "{82C260F6-84A5-49BB-842E-BA9CEE8E87DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{170F0C09-2B51-4823-9787-4781380FE494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170F0C09-2B51-4823-9787-4781380FE494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170F0C09-2B51-4823-9787-4781380FE494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B286632F-ECD8-4774-901A-F44455388CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B286632F-ECD8-4774-901A-F44455388CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B286632F-ECD8-4774-901A-F44455388CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B286632F-ECD8-4774-901A-F44455388CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E81839-AA05-44DE-A4B0-68690DD36789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E81839-AA05-44DE-A4B0-68690DD36789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E81839-AA05-44DE-A4B0-68690DD36789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E81839-AA05-44DE-A4B0-68690DD36789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C260F6-84A5-49BB-842E-BA9CEE8E87DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C260F6-84A5-49BB-842E-BA9CEE8E87DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C260F6-84A5-49BB-842E-BA9CEE8E87DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C260F6-84A5-49BB-842E-BA9CEE8E87DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
