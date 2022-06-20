@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingAlgorithms", "Sear
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "SortingAlgorithms\SortingAlgorithms.csproj", "{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumOfCoins", "GreedyAlgs\SumOfCoins.csproj", "{7425CF2B-C8A5-4496-8B2D-86CC0234569A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetCover", "SetCover\SetCover.csproj", "{4F8E1DCF-7B07-4205-8FF6-AE7378397E59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7425CF2B-C8A5-4496-8B2D-86CC0234569A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7425CF2B-C8A5-4496-8B2D-86CC0234569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7425CF2B-C8A5-4496-8B2D-86CC0234569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7425CF2B-C8A5-4496-8B2D-86CC0234569A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8E1DCF-7B07-4205-8FF6-AE7378397E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8E1DCF-7B07-4205-8FF6-AE7378397E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8E1DCF-7B07-4205-8FF6-AE7378397E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8E1DCF-7B07-4205-8FF6-AE7378397E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
