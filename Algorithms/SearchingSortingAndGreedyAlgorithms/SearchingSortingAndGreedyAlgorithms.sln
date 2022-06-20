@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchingSortingAndGreedyAlgorithms", "SearchingSortingAndGreedyAlgorithms\SearchingSortingAndGreedyAlgorithms.csproj", "{5E79DB83-2422-4092-B57F-EB6C8572118D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingAlgorithms", "SearchingSortingAndGreedyAlgorithms\SearchingAlgorithms.csproj", "{5E79DB83-2422-4092-B57F-EB6C8572118D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "SortingAlgorithms\SortingAlgorithms.csproj", "{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5E79DB83-2422-4092-B57F-EB6C8572118D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E79DB83-2422-4092-B57F-EB6C8572118D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E79DB83-2422-4092-B57F-EB6C8572118D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{875A6571-0B70-48D5-8AD4-4BFBEDA444CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
