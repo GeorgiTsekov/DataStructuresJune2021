@@ -18,7 +18,7 @@ namespace SetCover
         static void Main()
         {
             var universe = Console.ReadLine()
-                .Split(" ")
+                .Split(", ")
                 .Select(int.Parse)
                 .ToHashSet();
 
@@ -29,7 +29,7 @@ namespace SetCover
             for (int i = 0; i < n; i++)
             {
                 var set = Console.ReadLine()
-                    .Split()
+                    .Split(", ")
                     .Select(int.Parse)
                     .ToArray();
 

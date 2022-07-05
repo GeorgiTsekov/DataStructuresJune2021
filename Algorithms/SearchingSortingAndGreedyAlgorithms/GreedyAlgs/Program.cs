@@ -8,8 +8,11 @@ namespace SumOfCoins
     {
         static void Main()
         {
+            // input
+            // 1 2 5 10 50
+            // 33
             var coins = new Queue<int>(Console.ReadLine()
-                .Split(" ")
+                .Split(", ")
                 .Select(int.Parse)
                 .OrderByDescending(x => x));
 
