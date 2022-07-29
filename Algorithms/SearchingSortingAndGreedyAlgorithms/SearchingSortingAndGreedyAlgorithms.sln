@@ -45,11 +45,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CombinationsWithoutRepetiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CombinationsWithRepetitions", "CombinationsWithRepetitions\CombinationsWithRepetitions.csproj", "{18DB8AEB-4080-44CE-B9B2-EDB1D20A032F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{01ABC931-7CAF-4A76-84C1-B9068643C0E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snake", "Snake\Snake.csproj", "{01ABC931-7CAF-4A76-84C1-B9068643C0E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyFractionalKnapsackProblem", "GreedyFractionalKnapsackProblem\GreedyFractionalKnapsackProblem.csproj", "{B87551F1-43C3-463F-8F38-1C2CF3A05E64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreedyFractionalKnapsackProblem", "GreedyFractionalKnapsackProblem\GreedyFractionalKnapsackProblem.csproj", "{B87551F1-43C3-463F-8F38-1C2CF3A05E64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EgyptianFractions", "EgyptianFractions\EgyptianFractions.csproj", "{646115F7-1C41-46E0-9573-6B7A28456990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EgyptianFractions", "EgyptianFractions\EgyptianFractions.csproj", "{646115F7-1C41-46E0-9573-6B7A28456990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnightsTour", "KnightsTour\KnightsTour.csproj", "{21AD7A10-68C0-4E30-997C-0FDCB2EC1E00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{646115F7-1C41-46E0-9573-6B7A28456990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{646115F7-1C41-46E0-9573-6B7A28456990}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{646115F7-1C41-46E0-9573-6B7A28456990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21AD7A10-68C0-4E30-997C-0FDCB2EC1E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21AD7A10-68C0-4E30-997C-0FDCB2EC1E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21AD7A10-68C0-4E30-997C-0FDCB2EC1E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21AD7A10-68C0-4E30-997C-0FDCB2EC1E00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
