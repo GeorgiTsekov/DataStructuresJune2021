@@ -55,6 +55,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnightsTour", "KnightsTour\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuSolver", "SudokuSolver\SudokuSolver.csproj", "{652E455F-4EBD-406F-9578-16659AC4B69C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonachi", "Fibonachi\Fibonachi.csproj", "{DEEC6F0E-6A60-4819-AE97-06433318B736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LonguestIncreasingSubsequence", "LonguestIncreasingSubsequence\LonguestIncreasingSubsequence.csproj", "{194B6208-0AC2-42C2-9EFC-4F9ABD56E29A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +169,14 @@ Global
 		{652E455F-4EBD-406F-9578-16659AC4B69C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{652E455F-4EBD-406F-9578-16659AC4B69C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{652E455F-4EBD-406F-9578-16659AC4B69C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEC6F0E-6A60-4819-AE97-06433318B736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEC6F0E-6A60-4819-AE97-06433318B736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEC6F0E-6A60-4819-AE97-06433318B736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEC6F0E-6A60-4819-AE97-06433318B736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{194B6208-0AC2-42C2-9EFC-4F9ABD56E29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{194B6208-0AC2-42C2-9EFC-4F9ABD56E29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{194B6208-0AC2-42C2-9EFC-4F9ABD56E29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{194B6208-0AC2-42C2-9EFC-4F9ABD56E29A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
